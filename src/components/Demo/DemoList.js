@@ -7,8 +7,8 @@ const DemoList = (props) => {
 
   const sortedList = useMemo(() => {
     console.log('Items sorted');
-    return items.sort((a, b) => a - b);
-  }, [items]); 
+    return props.reverse === true? items.sort((a,b) => b-a) :items.sort((a, b) => a-b);
+  }, [items,props.reverse]); 
   console.log('DemoList RUNNING');
 
   return (
