@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useMemo } from 'react';
+import React, { useState, useMemo } from 'react';
 
 import './App.css';
 import DemoList from './components/Demo/DemoList';
@@ -8,10 +8,6 @@ function App() {
   const [listTitle, setListTitle] = useState('My List');
   const [reverse, setReverse] = useState(false);
   const [sortOrder, setSortOrder] = useState('Change to descending');
-
-  const changeTitleHandler = useCallback(() => {
-    setListTitle('New Title');
-  }, []);
 
   const orderChangeHandler = () => {
     !reverse? setSortOrder('Change to ascending'):setSortOrder('Change to descending');
@@ -23,7 +19,6 @@ function App() {
   return (
     <div className="app">
       <DemoList title={listTitle} items={listItems} reverse={reverse}/>
-      <Button onClick={changeTitleHandler}>Change List Title</Button>
       <Button onClick={orderChangeHandler}>{sortOrder}</Button>
     </div>
   );
