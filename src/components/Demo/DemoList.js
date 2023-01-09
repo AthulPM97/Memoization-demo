@@ -3,12 +3,12 @@ import React, { useMemo } from 'react';
 import classes from './DemoList.module.css';
 
 const DemoList = (props) => {
-  const { items } = props;
+  const { items, reverse } = props;
 
   const sortedList = useMemo(() => {
     console.log('Items sorted');
-    return props.reverse === true? items.sort((a,b) => b-a) :items.sort((a, b) => a-b);
-  }, [items,props.reverse]); 
+    return reverse? items.sort((a,b) => b-a) :items.sort((a, b) => a-b);
+  }, [items,reverse]); 
   console.log('DemoList RUNNING');
 
   return (

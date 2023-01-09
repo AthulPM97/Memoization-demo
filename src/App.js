@@ -7,13 +7,15 @@ import Button from './components/UI/Button/Button';
 function App() {
   const [listTitle, setListTitle] = useState('My List');
   const [reverse, setReverse] = useState(false);
+  const [sortOrder, setSortOrder] = useState('Change to descending');
 
   const changeTitleHandler = useCallback(() => {
     setListTitle('New Title');
   }, []);
 
   const orderChangeHandler = () => {
-    setReverse(true);
+    !reverse? setSortOrder('Change to ascending'):setSortOrder('Change to descending');
+    setReverse(!reverse);
   };
 
   const listItems = useMemo(() => [5, 3, 1, 10, 9], []);
@@ -22,7 +24,7 @@ function App() {
     <div className="app">
       <DemoList title={listTitle} items={listItems} reverse={reverse}/>
       <Button onClick={changeTitleHandler}>Change List Title</Button>
-      <Button onClick={orderChangeHandler}>Change order</Button>
+      <Button onClick={orderChangeHandler}>{sortOrder}</Button>
     </div>
   );
 }
